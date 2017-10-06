@@ -1,0 +1,113 @@
+GAMEDESC
+While having a cup of tea atop an old house, you accidentally fall through the roof into a small broom closet.  There is no way back to the roof, but a door leads out of the closet.  After allocating a combined total of 100 points of attack, defense, and regeneration, you prepare to open the door and discover what lays beyond.
+##
+MONSTER
+NAME Glog
+DESCRIPTION A slimy and toothy character
+GOLD 50
+ATTACK 20
+DEFENSE 30
+REGEN 100
+## 
+MONSTER 
+NAME Farly
+DESCRIPTION Tall, skinny, with claws and scales
+GOLD 100
+ATTACK 40
+DEFENSE 50
+REGEN 100
+##
+MONSTER
+NAME Soup Eater
+DESCRIPTION Makes soup out of people
+GOLD 200
+ATTACK 80
+DEFENSE 70
+REGEN 100
+##
+MONSTER
+NAME Insulation Monster
+DESCRIPTION Makes you itch until you rip your own head off!
+GOLD 10
+ATTACK 20
+DEFENSE 80
+REGEN 100
+##
+MONSTER
+NAME Bat
+DESCRIPTION Is it one, or a bunch of them?  Don't get too close!
+ATTACK 80
+GOLD 5
+DEFENSE 20
+REGEN 100
+##
+MONSTER 
+NAME Lab4
+DESCRIPTION This lab is a monster!
+ATTACK 60
+GOLD 100
+DEFENSE 10
+REGEN 100
+##
+MONSTER
+NAME Furnace
+DESCRIPTION Scaled Fire Dragon
+ATTACK 1200
+DEFENSE 1800
+GOLD 100000
+REGEN 100
+AUTOATTACK
+##
+ROOM 
+NAME Broom Closet
+DESCRIPTION Small, Cramped room full of cleaning implements
+CONNECT Living Room
+GOLD 10
+## 
+ROOM
+NAME Living Room 
+DESCRIPTION Spacious, but dank and mouldy.
+CONNECT Broom Closet
+CONNECT Attic
+CONNECT Kitchen
+MONSTER Glog
+MONSTER Farly
+GOLD 100
+##
+ROOM
+NAME Kitchen
+DESCRIPTION Nothing has been cooked here for a while
+CONNECT Living Room
+CONNECT Attic
+CONNECT Basement
+MONSTER Soup Eater
+GOLD 0
+##
+ROOM
+NAME Attic
+DESCRIPTION A place full of insulation, and bats
+CONNECT Living Room
+CONNECT Kitchen
+MONSTER Insulation Monster
+MONSTER Bat
+##
+ROOM
+NAME Basement
+DESCRIPTION Neat and tidy room, with some kind of canned goods stored on shelves
+CONNECT Kitchen
+CONNECT Utility Room
+CONNECT Garage
+##
+ROOM
+NAME Garage
+DESCRIPTION Dirt floor, contains a decrepid but restorable Mercedes SSK, a BMW R32, and a collection of rusty tools.
+CONNECT Basement
+MONSTER Lab4
+##
+ROOM
+NAME Utility Room
+DESCRIPTION Little room with blackened walls and ceiling.  Was there a fire here?
+CONNECT Basement
+MONSTER Furnace
+##
+
