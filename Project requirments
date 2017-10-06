@@ -1,0 +1,6 @@
+Each student will create a client and a server. These should be unique, and not share any source code, but be able to communicate with each other. They can be written in any language, although the server must be able to run on isoptera. There is no such requirement for the client, but if it doesn't run on my computer, I might ask you to demonstrate it.
+Client Requirements:
+
+    All information the user needs must be presented to them (i.e. health and status after battles, players entering the room they are in, messages, etc). The user should not be expected to remember things like their own health, nearby monsters, etc. So the client should track these things. The player should not have to be aware of technical details such as the types of lurk messages or the bit order of the player flags.
+    If the user is required to type, incoming information must not disturb the typing
+    Client must support the full Lurk protocol. Any server following that protocol should be able to communicate with your client.
