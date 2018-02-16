@@ -16,7 +16,7 @@ TEMPLATE = app
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
-CONFIG += g++11
+CONFIG += g++14
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
@@ -28,15 +28,21 @@ SOURCES += main.cpp\
     connectionwidow.cpp \
     server.cpp \
     LURK.cpp \
-    error.cpp
+    error.cpp \
+    verify.cpp \
+    characterdisplay.cpp
 
 HEADERS  += notepad.h \
     connectionwidow.h \
     server.h \
     LURK.h \
-    error.h
+    error.h \
+    verify.h \
+    characterdisplay.h
 
 FORMS    += notepad.ui \
     connectionwidow.ui \
     server.ui \
-    error.ui
+    error.ui \
+    verify.ui \
+    characterdisplay.ui

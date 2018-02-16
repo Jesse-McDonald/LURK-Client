@@ -58,7 +58,7 @@
      </widget>
     </item>
     <item row="5" column="0" colspan="2">
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="joinFight">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -161,7 +161,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="NameIn"/>
+     <widget class="QLineEdit" name="NameIn">
+      <property name="maxLength">
+       <number>32</number>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_7">
@@ -190,12 +194,18 @@
       <property name="text">
        <string>Cancel</string>
       </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="connect">
       <property name="text">
        <string>Join</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -211,22 +221,32 @@
     </rect>
    </property>
   </widget>
+  <action name="actionUpdatePoint">
+   <property name="text">
+    <string>UpdatePoint</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
   <connection>
    <sender>cancle</sender>
    <signal>clicked()</signal>
-   <receiver>ConnectionWidow</receiver>
-   <slot>close()</slot>
+   <receiver>actionClose</receiver>
+   <slot>trigger()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>77</x>
      <y>282</y>
     </hint>
     <hint type="destinationlabel">
-     <x>18</x>
-     <y>254</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -243,6 +263,54 @@
     <hint type="destinationlabel">
      <x>151</x>
      <y>240</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>atkIn</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>actionUpdatePoint</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defIn</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>actionUpdatePoint</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>348</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RegenIn</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>actionUpdatePoint</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>380</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>

@@ -5,8 +5,7 @@
 #include <iostream>
 #include <exception>
 #include <error.h>
-#include <thread>
-#include <chrono>
+
 
 Server::Server(QWidget *parent) :
     QDialog(parent),
@@ -21,23 +20,32 @@ Server::~Server()
 }
 void Server::accept()
 {
+    if (lurk.connected){
+        lurk.leave();
+    }
     try{
         lurk.connect(ui->ipIn->text().toStdString(),ui->portIn->text().toStdString());
 
         lurk.startReader();
         bool connected=false;
         this->setDisabled(true);
-        for(int i=0;i<1000;i++){
-            if(lurk.cPak->type==11){
-                connected=true;
-                break;
-            }
-             std::this_thread::sleep_for (std::chrono::milliseconds(1));
-        }
+        connected=lurk.timeout(11,1000);
+        lurk.connected=connected;
         if(connected){
+            lurk.lock();
+            lurk.serverIp=ui->ipIn->text().toStdString();
+            lurk.serverPort=ui->portIn->text().toStdString();
+            LURK::pkg* conv=(lurk.cPak.get());
+            LURK::gamePkg* conv2= dynamic_cast<LURK::gamePkg*>(conv);
+            if(conv2){
+                lurk.gameData = *(conv2);
+            }
             this->close();
             ConnectionWidow c;
             c.setModal(true);
+            c.content(&lurk.gameData);
+            //lurk.cPak=&lurk.nulPak;
+            lurk.unlock();
             c.exec();
         }else{
             error c;
@@ -45,8 +53,10 @@ void Server::accept()
             c.setError("No game recieved from host");
             c.exec();
             this->setEnabled(true);
+            lurk.leave();
         }
     }catch(const std::exception e){
+        std::cout<<e.what()<<"\n";
         error c;
         c.setModal(true);
         c.setError("Could not resolve host name");

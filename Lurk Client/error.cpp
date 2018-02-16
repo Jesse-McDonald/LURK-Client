@@ -6,6 +6,7 @@ error::error(QWidget *parent) :
     ui(new Ui::error)
 {
     ui->setupUi(this);
+    ui->errorBox->setWordWrap(true);
 }
 void error::setError(std::string e){
     this->errorCode=e;

@@ -28,12 +28,18 @@
       <property name="text">
        <string>Cancel</string>
       </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_2">
       <property name="text">
        <string>Connect</string>
+      </property>
+      <property name="default">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -86,6 +92,9 @@
      <widget class="QLineEdit" name="ipIn">
       <property name="text">
        <string>isoptera.lcsc.edu</string>
+      </property>
+      <property name="dragEnabled">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
